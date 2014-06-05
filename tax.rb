@@ -36,8 +36,11 @@ class Receipt
 			import = item[:imported] ? rounding(item[:price] * import)
 			sales = !item[:exempt] ? rounding(item[:price] * sales)
  	 		item_price = item[:price] + import + sales
-
-
+ 	 		puts "#{item[:amount]} #{item[:name]} #{item_price.round(2)}"
+ 	 		taxes += (import + sales)
+ 	 		total += item
 		end
+		puts "Sales Tax: #{taxes.round(2)}"
+		puts "Total: #{total.round(2)}"
 	end
 end
